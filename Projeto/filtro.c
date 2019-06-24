@@ -29,7 +29,21 @@ void main(int argc, char **argv) {
 	}
 	fclose(fp);
 	
-
+	//Invertendo imagem
+	for(i=0; i<N/2; i++)
+ 		imX[i]=-imX[i];
+ 		
+ 			
+	//Chamar FFT aqui!!
+	
+	
+	for(i=0; i<N/2; i++) {
+		reX[i]=reX[i]/N;
+		imX[i]=-imX[i]/N;
+	}
+	
+	//Passando os dados da resposta ao Impulso no domínio do tempo
 	for(i=0; i<N; i++)
-		printf("%lf\t%lf\n", imX[i], reX[i]);
+		imp[i]=sqrt(reX[i]*reX[i]+imX[i]*imX[i]);
+	
 }
