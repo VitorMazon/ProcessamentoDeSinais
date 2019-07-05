@@ -11,7 +11,7 @@ void main(int argc, char **argv) {
 	int i, j, k;
 	int N=2048, M;
 	M=atof(argv[1]);
-	double reX[N], imX[N], t[N], magX[N];
+	double *reX, *imX, *t, *magX;
 	
 	//Abrindo arquivo com os dados da curva
 	curva = fopen("curva.dat", "r");
@@ -23,9 +23,14 @@ void main(int argc, char **argv) {
 		return;
 	}
 	
+	reX=(double*) malloc((N)*sizeof(double));
+	imX=(double*) malloc((N)*sizeof(double));
+	magX=(double*) malloc((N)*sizeof(double));
+	t=(double*) malloc((N)*sizeof(double));
+
 	//Lendo os dados do arquivo
 	i=0;
-	while(i!=(N/2)-1){
+	while( i!=N/2 ){
 		fscanf(curva, "%lf  %lf\n", &imX[i], &reX[i]);
 		i++;
 	}
@@ -49,7 +54,12 @@ void main(int argc, char **argv) {
 	//Passando os dados da resposta ao Impulso no domínio do tempo
 	for(i=0; i<N; i++)
 		fprintf(imp, "%d  %12.6lf\n", i, sqrt(reX[i]*reX[i]+imX[i]*imX[i]));
-		
+	
+	free(reX);
+	free(imX);
+	free(t);
+	free(magX);
+	
 	return;	
 }
 
