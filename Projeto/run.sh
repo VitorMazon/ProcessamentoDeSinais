@@ -6,10 +6,10 @@
 #Obtém o número de linhas do arquivo
 #N=$(wc -l curva.dat | cut -d c -f1)
 
-gcc filtro.c -lm -o prog
-./prog 20 > filtro20.dat
-mv janelamento.dat janelamento20.dat
-mv impulso.dat impulso20.dat
+gcc filtro.c -lm
+./a.out > filtro30.dat
+mv janelamento.dat janelamento30.dat
+mv impulso.dat impulso30.dat
 #./prog 70 > test.dat
 #mv janelamento.dat janelamento70.dat
 #mv impulso.dat impulso70.dat
